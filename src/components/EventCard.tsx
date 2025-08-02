@@ -1,7 +1,9 @@
 'use client'
 
+
 import { Event } from '@/lib/supabase'
 import Image from 'next/image'
+import { useState } from 'react'
 
 interface EventCardProps {
   event: Event
@@ -23,10 +25,9 @@ const tierHierarchy = {
   platinum: 3
 }
 
-import { useState } from 'react'
-
 export default function EventCard({ event, userTier, isAccessible }: EventCardProps) {
-  const [imgSrc, setImgSrc] = useState(event.image_url);
+  const [imageError, setImageError] = useState(false)
+  
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       weekday: 'long',
@@ -48,19 +49,42 @@ export default function EventCard({ event, userTier, isAccessible }: EventCardPr
     return null
   }
 
+  // Create a simple colored placeholder based on tier
+  const getTierColor = () => {
+    const colors = {
+      free: '#6b7280',
+      silver: '#3b82f6', 
+      gold: '#f59e0b',
+      platinum: '#a855f7'
+    }
+    return colors[event.tier] || '#6b7280'
+  }
+
   return (
     <div className={`bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 ${!isAccessible ? 'opacity-60' : ''}`}>
       <div className="relative h-48">
-        <Image
-          src={imgSrc}
-          alt={event.title}
-          fill
-          className="object-cover"
-          onError={() => setImgSrc('/fallback-event.png')}
-        />
+        {!imageError ? (
+          <Image
+            src={event.image_url}
+            alt={event.title}
+            fill
+            className="object-cover"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          // Fallback colored div when image fails to load
+          <div 
+            className="w-full h-full flex items-center justify-center text-white font-bold text-lg"
+            style={{ backgroundColor: getTierColor() }}
+          >
+            {event.title}
+          </div>
+        )}
+        
         <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${tierColors[event.tier]}`}>
           {event.tier.charAt(0).toUpperCase() + event.tier.slice(1)}
         </div>
+        
         {!isAccessible && (
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
