@@ -261,4 +261,3 @@ MIT License - Feel free to use this project as a template for your own applicati
 
 ---
 
-**Built with ❤️ for the PsypherAI Technical Challenge**  
