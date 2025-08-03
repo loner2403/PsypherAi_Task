@@ -103,18 +103,25 @@ export default async function EventsContent() {
         <nav className="relative z-10 bg-white/80 backdrop-blur-xl border-b border-white/20 shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-16 items-center">
+              {/* Logo - Always visible */}
               <div className="flex items-center">
                 <Link href="/" className="flex items-center space-x-2 group">
                   <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
                     <span className="text-white font-bold text-sm">E</span>
                   </div>
-                  <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+                  <span className="text-lg sm:text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent hidden xs:block">
                     Event Showcase
+                  </span>
+                  <span className="text-lg font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent block xs:hidden">
+                    Events
                   </span>
                 </Link>
               </div>
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center space-x-3">
+              
+              {/* Right side - Responsive layout */}
+              <div className="flex items-center space-x-2 sm:space-x-4">
+                {/* Welcome message - Hidden on mobile */}
+                <div className="hidden md:flex items-center space-x-3">
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     <span className="text-sm text-gray-600 font-medium">
@@ -122,15 +129,20 @@ export default async function EventsContent() {
                     </span>
                   </div>
                   <div className="h-4 w-px bg-gray-300"></div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${
-                    userTier === 'free' ? 'bg-gray-100 text-gray-700' :
-                    userTier === 'silver' ? 'bg-blue-100 text-blue-700' :
-                    userTier === 'gold' ? 'bg-yellow-100 text-yellow-700' :
-                    'bg-purple-100 text-purple-700'
-                  }`}>
-                    {userTier} Member
-                  </span>
                 </div>
+                
+                {/* Tier badge - Responsive sizing */}
+                <span className={`px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs font-semibold uppercase tracking-wide ${
+                  userTier === 'free' ? 'bg-gray-100 text-gray-700' :
+                  userTier === 'silver' ? 'bg-blue-100 text-blue-700' :
+                  userTier === 'gold' ? 'bg-yellow-100 text-yellow-700' :
+                  'bg-purple-100 text-purple-700'
+                }`}>
+                  <span className="hidden sm:inline">{userTier} Member</span>
+                  <span className="sm:hidden">{userTier}</span>
+                </span>
+                
+                {/* User button */}
                 <UserButton />
               </div>
             </div>
@@ -237,7 +249,7 @@ export default async function EventsContent() {
                 ))}
               </div>
               
-              {/* Upgrade CTA */}
+               {/* Upgrade CTA  */}
               <div className="mt-12 text-center">
                 <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
                   🚀 Upgrade Your Membership to Access All Events

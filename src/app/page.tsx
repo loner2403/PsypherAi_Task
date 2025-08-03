@@ -8,15 +8,16 @@ function NavSkeleton() {
     <nav className="bg-white/80 backdrop-blur-xl border-b border-white/20 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <div className="animate-pulse">
-            <div className="h-6 w-32 bg-gray-200 rounded"></div>
+          <div className="flex items-center space-x-2 animate-pulse">
+            <div className="w-8 h-8 bg-gray-200 rounded-lg"></div>
+            <div className="h-6 w-24 sm:w-32 bg-gray-200 rounded"></div>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <div className="animate-pulse">
-              <div className="h-8 w-20 bg-gray-200 rounded"></div>
+              <div className="h-8 w-16 sm:w-20 bg-gray-200 rounded"></div>
             </div>
             <div className="animate-pulse">
-              <div className="h-8 w-24 bg-gray-200 rounded"></div>
+              <div className="h-8 w-16 sm:w-24 bg-gray-200 rounded"></div>
             </div>
           </div>
         </div>
@@ -44,26 +45,31 @@ export default function Home() {
                   <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
                     <span className="text-white font-bold text-sm">E</span>
                   </div>
-                  <h1 className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+                  <h1 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent hidden xs:block">
                     Event Showcase
+                  </h1>
+                  <h1 className="text-lg font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent block xs:hidden">
+                    Events
                   </h1>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 sm:space-x-4">
                 <SignedOut>
                   <SignInButton mode="modal">
-                    <button className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100/50">
-                      Sign In
+                    <button className="text-gray-600 hover:text-gray-900 px-2 py-2 sm:px-4 sm:py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100/50">
+                      <span className="hidden sm:inline">Sign In</span>
+                      <span className="sm:hidden">Login</span>
                     </button>
                   </SignInButton>
                   <SignUpButton mode="modal">
-                    <button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                      Get Started
+                    <button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-3 py-2 sm:px-6 sm:py-2 rounded-lg text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                      <span className="hidden sm:inline">Get Started</span>
+                      <span className="sm:hidden">Join</span>
                     </button>
                   </SignUpButton>
                 </SignedOut>
                 <SignedIn>
-                  <Link href="/events" className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100/50">
+                  <Link href="/events" className="text-gray-600 hover:text-gray-900 px-2 py-2 sm:px-4 sm:py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:bg-gray-100/50">
                     Events
                   </Link>
                   <UserButton />
@@ -75,26 +81,26 @@ export default function Home() {
       </Suspense>
 
       {/* Hero Section */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-16 sm:pb-20">
         <div className="text-center">
           {/* Badge */}
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-indigo-100 to-purple-100 border border-indigo-200/50 mb-8">
-            <span className="text-sm font-medium text-indigo-700">🎉 Tier-based exclusive access</span>
+          <div className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r from-indigo-100 to-purple-100 border border-indigo-200/50 mb-6 sm:mb-8">
+            <span className="text-xs sm:text-sm font-medium text-indigo-700">🎯 Tier-based event access</span>
           </div>
           
           {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-            <span className="block">Exclusive Events</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 animate-pulse">
-              Tailored to You
+          <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+            <span className="block">Exclusive Events for</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">
+              Every Membership
             </span>
           </h1>
           
           {/* Subtitle */}
-          <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Access premium events and workshops based on your membership tier.
-            <span className="block mt-2 text-lg text-gray-500">
-              From free community meetups to exclusive CEO roundtables.
+          <p className="text-lg xs:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 sm:mb-12 leading-relaxed px-2">
+            Discover premium workshops, networking events, and exclusive conferences 
+            <span className="block mt-1 sm:mt-2">
+              tailored to your membership tier and professional goals.
             </span>
           </p>
           
