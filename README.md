@@ -251,4 +251,3 @@ MIT License - Feel free to use this project as a template for your own applicati
 ---
 
 **Built with ❤️ for the PsypherAI Technical Challenge**  
-*Demonstrating modern web development practices, security-first architecture, and enterprise-grade user experience.*
