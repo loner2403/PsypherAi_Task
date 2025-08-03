@@ -1,5 +1,6 @@
 import { auth } from '@clerk/nextjs/server';
 import { clerkClient } from '@clerk/nextjs/server';
+import { supabase } from '@/lib/supabase';
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
@@ -26,6 +27,26 @@ export async function POST(req: Request) {
         tier: newTier,
       },
     });
+    
+    // Also update in Supabase database
+    try {
+      const { error: supabaseError } = await supabase
+        .from('users')
+        .update({ 
+          tier: newTier,
+          updated_at: new Date().toISOString()
+        })
+        .eq('clerk_id', userId);
+      
+      if (supabaseError) {
+        console.warn('Failed to sync tier to Supabase:', supabaseError);
+        // Don't fail the request, just log the warning
+      } else {
+        console.log('✅ Tier synced to Supabase successfully');
+      }
+    } catch (syncError) {
+      console.warn('Supabase sync error (non-critical):', syncError);
+    }
     
     return NextResponse.json({ 
       success: true, 

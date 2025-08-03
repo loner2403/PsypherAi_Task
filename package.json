@@ -10,6 +10,7 @@
      "find:unused": "next-unused"
   },
   "next-unused": {
+    "entrypoints": ["src/app/page.tsx", "src/app/layout.tsx", "src/app/events/page.tsx"],
     "include": ["src/components", "src/lib", "src/hooks"],
     "exclude": ["src/app/debug*", "test-*.js"]
   },

@@ -13,11 +13,7 @@ if (!supabaseAnonKey) {
   throw new Error('Missing NEXT_PUBLIC_SUPABASE_ANON_KEY environment variable')
 }
 
-console.log('🔧 Supabase config:', {
-  url: supabaseUrl,
-  keyLength: supabaseAnonKey.length,
-  timestamp: new Date().toISOString()
-})
+
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {

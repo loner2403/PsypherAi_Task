@@ -6,7 +6,7 @@ export async function fetchEventsWithRetry(maxRetries = 3) {
   
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      console.log(`🔍 Database attempt ${attempt}/${maxRetries}`)
+
       
       const { data, error } = await supabase
         .from('events')
@@ -17,16 +17,16 @@ export async function fetchEventsWithRetry(maxRetries = 3) {
         throw error
       }
 
-      console.log(`✅ Database success on attempt ${attempt}`)
+
       return { data, error: null }
     } catch (error) {
-      console.warn(`⚠️ Database attempt ${attempt} failed:`, error)
+
       lastError = error
       
       if (attempt < maxRetries) {
         // Exponential backoff: wait longer between retries
         const delay = Math.min(1000 * Math.pow(2, attempt - 1), 5000)
-        console.log(`⏳ Waiting ${delay}ms before retry...`)
+
         await new Promise(resolve => setTimeout(resolve, delay))
       }
     }
