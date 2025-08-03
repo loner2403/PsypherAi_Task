@@ -85,6 +85,17 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Demo Users
+
+To quickly test the different tiers, you can create users with the following credentials. After creating them, you will need to manually set their `tier` in the Clerk dashboard as described below.
+
+| Tier      | Email                  | Password         |
+|-----------|------------------------|------------------|
+| Free      | `user@example.com`    | `#TestPassword@123` |
+| Silver    | `silver@test.com`  | `#Silver@123` |
+| Gold      | `gold@test.com`    | `#Gold@123` |
+| Platinum  | `platinum@test.com`| `#Platinum@123` |
+
 ## Testing User Tiers
 
 There are two ways to test different membership tiers:
@@ -104,7 +115,7 @@ There are two ways to test different membership tiers:
 - **Free**: 2 free events
 - **Silver**: 4 events (free + silver)
 - **Gold**: 6 events (free + silver + gold)
-- **Platinum**: 6 events (same as gold for now)
+- **Platinum**: 8 events (free + silver + gold + platinum)
 
 ## Project Structure
 
