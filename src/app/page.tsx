@@ -184,7 +184,7 @@ export default function Home() {
               icon: '💎',
               popular: false
             }
-          ].map((tier, index) => (
+          ].map((tier, _) => (
             <div key={tier.name} className={`group relative bg-white/80 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 ${tier.popular ? 'ring-2 ring-yellow-400/50' : ''}`}>
               {tier.popular && (
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">

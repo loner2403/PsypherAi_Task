@@ -55,7 +55,7 @@ export default async function EventsContent() {
                 Connection Issue
               </h1>
               <p className="text-gray-600 mb-6">
-                We're having trouble connecting to our database. This might be a temporary network issue.
+                We&apos;re having trouble connecting to our database. This might be a temporary network issue.
               </p>
               <div className="space-y-3">
                 <Link 

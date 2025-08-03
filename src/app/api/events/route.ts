@@ -21,18 +21,18 @@ export async function GET() {
 
 
     if (!userId || !user) {
-
+      console.log('❌ Unauthorized access attempt')
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     const userTier = (user.publicMetadata?.tier as string) || 'free'
     const userTierLevel = tierHierarchy[userTier as keyof typeof tierHierarchy]
     
-
+    console.log('🏆 User Tier:', userTier, 'Level:', userTierLevel)
 
     // Test Supabase connection
-
-    const { data: testConnection, error: connectionError } = await supabase
+    console.log('🔍 Testing Supabase connection...')
+    const { error: connectionError } = await supabase
       .from('events')
       .select('count', { count: 'exact', head: true })
 

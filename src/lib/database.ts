@@ -2,7 +2,7 @@ import { supabase } from './supabase'
 
 // Helper function with built-in retry logic
 export async function fetchEventsWithRetry(maxRetries = 3) {
-  let lastError: any = null
+  let lastError: Error | null = null
   
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
@@ -20,8 +20,7 @@ export async function fetchEventsWithRetry(maxRetries = 3) {
 
       return { data, error: null }
     } catch (error) {
-
-      lastError = error
+      lastError = error instanceof Error ? error : new Error(String(error))
       
       if (attempt < maxRetries) {
         // Exponential backoff: wait longer between retries
