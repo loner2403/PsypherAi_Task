@@ -139,8 +139,8 @@ PsypherAi_Task/
 │   │   ├── EventsPageSkeleton.tsx   # Loading skeleton with animations
 │   │   ├── TierUpgrade.tsx          # Tier upgrade interface
 │   │   ├── UserSync.tsx             # Client-side user synchronization
-│   │   ├── ErrorMessage.tsx         # Error display component
-│   │   └── LoadingSpinner.tsx       # Generic loading spinner
+│   │   
+│   │   
 │   ├── lib/                         # Utility libraries
 │   │   ├── supabase.ts             # Supabase client configuration
 │   │   ├── supabaseAdmin.ts        # Admin client for server operations
